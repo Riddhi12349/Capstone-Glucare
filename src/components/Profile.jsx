@@ -17,7 +17,6 @@ import {
   addDoc,
   query,
   where,
-  onSnapshot,
   orderBy,
   getDocs,
 } from "firebase/firestore";
@@ -29,7 +28,6 @@ const ProfilePage = () => {
 
   const [glucoseValue, setGlucoseValue] = useState("");
   const [glucoseRecords, setGlucoseRecords] = useState([]);
-  const [loading, setLoading] = useState(true); // To manage loading state
 
   // Fetch glucose records on component mount
   useEffect(() => {
@@ -37,7 +35,7 @@ const ProfilePage = () => {
       if (user) {
         fetchGlucoseRecords(user.uid);
       } else {
-        setLoading(false); // No user logged in
+       // setLoading(false); // No user logged in
       }
     });
 
@@ -67,7 +65,7 @@ const ProfilePage = () => {
     } catch (error) {
       console.error("Error fetching glucose records:", error);
       alert("Failed to fetch records.");
-      setLoading(false);
+      //setLoading(false);
     }
   };
 
@@ -167,10 +165,7 @@ const ProfilePage = () => {
 
       <Typography variant="h6">Previous Glucose Records</Typography>
 
-      {/* Loading state check
-      {loading ? (
-        <Typography>Loading records...</Typography>
-      ) : ( */}
+
       <List>
         {glucoseRecords.length > 0 ? (
           glucoseRecords.map((record) => (
@@ -187,7 +182,7 @@ const ProfilePage = () => {
           <Typography>No records found.</Typography>
         )}
       </List>
-      {/* )} */}
+ 
     </Container>
   );
 };
