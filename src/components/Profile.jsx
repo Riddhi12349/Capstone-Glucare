@@ -61,7 +61,7 @@ const ProfilePage = () => {
       }));
 
       setGlucoseRecords(records);
-      setLoading(false); // Set loading to false after fetching
+    //  setLoading(false); // Set loading to false after fetching
     } catch (error) {
       console.error("Error fetching glucose records:", error);
       alert("Failed to fetch records.");
