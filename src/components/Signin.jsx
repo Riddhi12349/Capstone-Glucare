@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { Container, Box, TextField, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { app } from "../firebase";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -15,6 +14,7 @@ function LoginPage() {
     e.preventDefault();
     try {
       const res = signInWithEmailAndPassword(auth, email, password);
+      console.log(res);
       navigate("/myprofile");
     } catch (err) {
       console.log(err);
